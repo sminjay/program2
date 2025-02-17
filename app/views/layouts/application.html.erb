@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for(:title) || "Movie Ticketing System" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<!-- ✅ User Navigation Bar -->
+<nav style="background-color: #333; padding: 10px;">
+  <ul style="list-style: none; display: flex; justify-content: space-between; padding: 0; margin: 0;">
+    <li><a href="<%= root_path %>" style="color: white; text-decoration: none; margin-right: 15px;">Home</a></li>
+    <li><a href="<%= movies_path %>" style="color: white; text-decoration: none; margin-right: 15px;">Movies</a></li>
+
+    <% if logged_in? && current_user %>
+      <li><a href="<%= tickets_path %>" style="color: white; text-decoration: none; margin-right: 15px;">My Tickets</a></li>
+      <li><a href="<%= user_path(current_user) %>" style="color: white; text-decoration: none; margin-right: 15px;">Profile</a></li>
+      <li><a href="<%= logout_path %>" style="color: white; text-decoration: none;">Logout</a></li>
+    <% else %>
+      <li><a href="<%= login_path %>" style="color: white; text-decoration: none;">Login</a></li>
+    <% end %>
+  </ul>
+</nav>
+<% if flash[:warning] %>
+  <script type="text/javascript">
+      alert("<%= flash[:warning] %>");
+  </script>
+<% end %>
+
+
+<%= yield %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Shows" %>
+
+<h1>Shows</h1>
+<div id="shows">
+  <% @shows.each do |show| %>
+    <%= render show %> <!-- Render each individual show -->
+    <%= link_to "Book Ticket", new_show_ticket_path(show_id: show.id), class: "btn btn-success" %>
+    <%= link_to "Back to Movies", movies_path, class: "btn btn-secondary" %>
+
+    <h2>Booked Tickets</h2>
+    <ul>
+      <% show.tickets.each do |ticket| %> <!-- Loop through tickets for the current show -->
+        <li>
+          <strong>Confirmation:</strong> <%= ticket.confirmation_number %> |
+          <strong>User:</strong> <%= ticket.user_id %> |
+          <strong>Status:</strong> <%= ticket.status %>
+        </li>
+      <% end %>
+    </ul>
+    <p>
+      <!-- Link to show details or any other link you want to add -->
+      <%#= link_to "Show this show", show %>
+    </p>
+  <% end %>
+</div>

@@ -1,0 +1,37 @@
+<%= form_with(model: @ticket) do |form| %>
+  <% if @ticket.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+      <ul>
+        <% @ticket.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select :user_id, User.all, :id, :username, prompt: "Select a User" %>
+  </div>
+
+  <div>
+    <%= form.label :show_id, style: "display: block" %>
+    <%= form.collection_select :show_id, Show.all, :id, :id, prompt: "Select a Show" %>
+  </div>
+
+  <div>
+    <%= form.label :confirmation_number, style: "display: block" %>
+    <%= form.text_field :confirmation_number %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

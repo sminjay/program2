@@ -1,0 +1,13 @@
+<!-- app/views/admin/administrators/edit.html.erb -->
+<% content_for :title, "Editing admin" %>
+
+<h1>Editing admin</h1>
+
+<%= render "form", administrator: @administrator %>
+
+<br>
+
+<div>
+  <%= link_to "Show this admin", admin_administrator_path(@administrator) %> |
+  <%#= link_to "Back to admins", admin_administrators_path %>
+</div>

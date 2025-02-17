@@ -1,0 +1,11 @@
+<!-- app/views/admin/administrators/show.html.erb -->
+<p style="color: green"><%= notice %></p>
+
+<%= render partial: 'administrator', locals: { administrator: @administrator } %>
+
+<div>
+  <%= link_to "Edit this admin", edit_admin_administrator_path(@administrator) %>
+  <%#= link_to "Back to admins", admin_administrators_path %>
+
+  <%#= button_to "Destroy this admin", admin_administrator_path(@administrator), method: :delete %>
+</div>

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Movies" %>
+
+<h1>Movies</h1>
+<%# if admin? %>
+  <%#= link_to "Add Movie", new_admin_movie_path, class: "btn btn-primary" %>
+<%# end %>
+<!--<ul>-->
+  <%# @movies.each do |movie| %>
+<!--    <li>-->
+<!--      <%#= movie.title %> (<%#= movie.genre %>)-->
+      <%# if admin? %>
+        <%#= link_to "Edit", edit_admin_movie_path(movie), class: "btn btn-secondary" %>
+        <%#= link_to "Delete", admin_movie_path(movie), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      <%# end %>
+<!--    </li>-->
+  <%# end %>
+<!--</ul>-->
+
+<div id="movies">
+  <% @movies.each do |movie| %>
+    <%= render movie %>
+    <p>
+      <%= link_to "Show this movie", admin_movie_path(movie) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New movie", new_admin_movie_path %>

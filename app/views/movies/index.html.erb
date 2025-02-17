@@ -1,0 +1,28 @@
+<!--<p style="color: green"><%#= notice %></p>-->
+
+<%# content_for :title, "Movies" %>
+
+<!--<h1>Movies</h1>-->
+
+<!--<div id="movies">-->
+  <%# @movies.each do |movie| %>
+    <%#= render movie %>
+    <%#= link_to "View Shows", movie_shows_path(movie), class: "btn btn-primary" %>
+  <%# end %>
+
+<!--</div>-->
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Movies" %>
+
+<h1>Movies</h1>
+
+<div id="movies">
+  <% @movies.each do |movie| %>
+    <div class="movie">
+<!--      <h3><%#= movie.title %></h3>-->
+      <%= render movie %>
+      <%= link_to "View Shows", movie_shows_path(movie), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
